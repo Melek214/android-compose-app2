@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.jetpackegitim2.LoginScreen
 import com.example.jetpackegitim2.RegisterScreen
-import com.example.jetpackegitim2.ui.screens.UsersScreen
+import com.example.jetpackegitim2.ui.users.UsersScreen
 
 @Composable
 fun AppNavHost(
