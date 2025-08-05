@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,15 +35,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            JetPackEgitim2Theme{
+            JetPackEgitim2Theme {
                 val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize(),
                     topBar = {
                         val backStackEntry = navController.currentBackStackEntryAsState().value
-                        val showBackButton = backStackEntry?.destination?.route != NavigatioItem.Login.route
+                        val showBackButton =
+                            backStackEntry?.destination?.route != NavigatioItem.Login.route
                         MyTopBar(showBackButton, navController)
                     }) { innerPadding ->
-                    AppNavHost(navController = navController, modifier = Modifier.padding(innerPadding))
+                    AppNavHost(
+                        navController = navController,
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -75,23 +80,40 @@ fun LoginScreen(navController: NavHostController) {
     Column {
         Text(text = "Giriş Yap Sayfası")
         Button(onClick = {
-            navController.navigate("${NavigatioItem.Register.route}/$nameSurname")  }) {
+            navController.navigate("${NavigatioItem.Register.route}/$nameSurname")
+        }) {
             Text(text = "kayıt Ol Sayfasına Git")
         }
 
+        Spacer(modifier = Modifier.size(12.dp))
         Button(onClick = {
-            navController.navigate(NavigatioItem.Users.route) }) {
+            navController.navigate(NavigatioItem.Users.route)
+        }) {
             Text(text = "Kullanıcı Listesi")
+        }
+
+        Spacer(modifier = Modifier.size(12.dp))
+        Button(onClick = {
+            navController.navigate(NavigatioItem.SharedPrefences.route)
+        }) {
+            Text(text = "Shared Preferences Dersi")
+        }
+
+        Spacer(modifier = Modifier.size(12.dp))
+        Button(onClick = {
+            navController.navigate(NavigatioItem.Note.route)
+        }) {
+            Text(text = "Room Veri Tabanı Dersi")
         }
     }
 }
 
-@Composable
-fun RegisterScreen(navController: NavHostController, nameSurname: String) {
-    Column {
-        Text(text = "Kayıt Ol Sayfası : $nameSurname")
-        Button(onClick = { navController.navigate(NavigatioItem.Login.route) }) {
-            Text(text = "Giriş Yap Sayfasına Git")
+    @Composable
+    fun RegisterScreen(navController: NavHostController, nameSurname: String) {
+        Column {
+            Text(text = "Kayıt Ol Sayfası : $nameSurname")
+            Button(onClick = { navController.navigate(NavigatioItem.Login.route) }) {
+                Text(text = "Giriş Yap Sayfasına Git")
+            }
         }
     }
-}

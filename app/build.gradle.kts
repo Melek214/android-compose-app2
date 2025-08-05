@@ -7,6 +7,10 @@ plugins {
 }
 
 android {
+    hilt {
+        enableAggregatingTask = false
+    }
+
     namespace = "com.example.jetpackegitim2"
     compileSdk = 35
 
@@ -45,7 +49,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11"
+        kotlinCompilerExtensionVersion = "1.5.10" //1.5.11 idi
     }
 
     packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -71,7 +75,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
 
     // Force correct version of javapoet
-    implementation("com.squareup:javapoet:1.13.0")
+    implementation(libs.javapoet)
 
     // Lifecycle
     implementation(libs.lifecycle.viewmodel.ktx)
@@ -79,6 +83,11 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+
+    //room
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
 
     // Tests
     testImplementation(libs.junit)

@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.jetpackegitim2.LoginScreen
 import com.example.jetpackegitim2.RegisterScreen
+import com.example.jetpackegitim2.ui.SharedPrefences.SharedPrefencesScreen
+import com.example.jetpackegitim2.ui.notes.NotesScreen
 import com.example.jetpackegitim2.ui.users.UsersScreen
 
 @Composable
@@ -26,6 +28,14 @@ fun AppNavHost(
         composable(NavigatioItem.Users.route) {
             UsersScreen()
         }
+        composable(NavigatioItem.SharedPrefences.route) {
+            SharedPrefencesScreen()
+        }
+
+        composable(NavigatioItem.Note.route) {
+            NotesScreen()
+        }
+
         composable("${NavigatioItem.Register.route}/{nameSurname}"
         ) {
             val nameSurname = it.arguments?.getString("nameSurname") ?: ""

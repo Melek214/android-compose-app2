@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.2"
+javapoet = "1.13.0"
 kotlin = "2.0.0"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -14,11 +15,13 @@ kapt = "2.0.20"
 hilt-compose = "1.1.0"
 runtimeLivedata = "1.8.3"
 coroutinesAndroid = "1.8.0"
+roomVersion = "2.7.2"
 
 
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+javapoet = { module = "com.squareup:javapoet", version.ref = "javapoet" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -40,6 +43,11 @@ lifecycle-viewmodel-ktx =  {group= "androidx.lifecycle", name= "lifecycle-viewmo
 lifecycle-livedata-ktx =  {group= "androidx.lifecycle", name= "lifecycle-livedata-ktx", version.ref="lifecycleRuntimeKtx"}
 kotlinx-coroutines-android =  {group= "org.jetbrains.kotlinx", name= "kotlinx-coroutines-android", version.ref="coroutinesAndroid"}
 runtime-livedata =  {group= "androidx.compose.runtime", name= "runtime-livedata", version.ref="runtimeLivedata"}
+room-runtime = {group ="androidx.room", name = "room-runtime", version.ref = "roomVersion"}
+room-compiler = {group ="androidx.room", name = "room-compiler", version.ref = "roomVersion"}
+room-ktx = {group ="androidx.room", name = "room-ktx", version.ref = "roomVersion"}
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
