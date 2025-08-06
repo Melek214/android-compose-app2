@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         val backStackEntry = navController.currentBackStackEntryAsState().value
                         val showBackButton =
-                            backStackEntry?.destination?.route != NavigatioItem.Login.route
+                            backStackEntry?.destination?.route != NavigatioItem.Note.route
                         MyTopBar(showBackButton, navController)
                     }) { innerPadding ->
                     AppNavHost(
@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyTopBar(showBackButton: Boolean, navController: NavHostController) {
-    TopAppBar(title = { Text(text = "TopBar") },
+    TopAppBar(title = { Text(text = "Not Uygulamam") },
         navigationIcon = {
             if (showBackButton) {
                 Image(
@@ -73,47 +73,3 @@ fun MyTopBar(showBackButton: Boolean, navController: NavHostController) {
         })
 }
 
-@Composable
-fun LoginScreen(navController: NavHostController) {
-
-    val nameSurname = stringResource(id = R.string.adSoyad)
-    Column {
-        Text(text = "Giriş Yap Sayfası")
-        Button(onClick = {
-            navController.navigate("${NavigatioItem.Register.route}/$nameSurname")
-        }) {
-            Text(text = "kayıt Ol Sayfasına Git")
-        }
-
-        Spacer(modifier = Modifier.size(12.dp))
-        Button(onClick = {
-            navController.navigate(NavigatioItem.Users.route)
-        }) {
-            Text(text = "Kullanıcı Listesi")
-        }
-
-        Spacer(modifier = Modifier.size(12.dp))
-        Button(onClick = {
-            navController.navigate(NavigatioItem.SharedPrefences.route)
-        }) {
-            Text(text = "Shared Preferences Dersi")
-        }
-
-        Spacer(modifier = Modifier.size(12.dp))
-        Button(onClick = {
-            navController.navigate(NavigatioItem.Note.route)
-        }) {
-            Text(text = "Room Veri Tabanı Dersi")
-        }
-    }
-}
-
-    @Composable
-    fun RegisterScreen(navController: NavHostController, nameSurname: String) {
-        Column {
-            Text(text = "Kayıt Ol Sayfası : $nameSurname")
-            Button(onClick = { navController.navigate(NavigatioItem.Login.route) }) {
-                Text(text = "Giriş Yap Sayfasına Git")
-            }
-        }
-    }

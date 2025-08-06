@@ -1,5 +1,6 @@
-package com.example.jetpackegitim2.ui.notes
+package com.example.jetpackegitim2.di
 
+import com.example.jetpackegitim2.model.NoteModel
 import javax.inject.Inject
 
 class NotesRepository @Inject constructor(private val notesDao: NotesDao) {
@@ -17,4 +18,5 @@ class NotesRepository @Inject constructor(private val notesDao: NotesDao) {
     suspend fun updateNote(noteModel: NoteModel){
         notesDao.updateNote(noteModel)
     }
+    suspend fun getNotes(id: Int):NoteModel = notesDao.getNotes(id)
 }

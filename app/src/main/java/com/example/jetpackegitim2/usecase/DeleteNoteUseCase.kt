@@ -1,6 +1,6 @@
-package com.example.jetpackegitim2.ui.notes.usecase
+package com.example.jetpackegitim2.usecase
 
-import com.example.jetpackegitim2.ui.notes.NotesRepository
+import com.example.jetpackegitim2.di.NotesRepository
 import javax.inject.Inject
 
 class DeleteNoteUseCase @Inject constructor(private val notesRepository: NotesRepository){

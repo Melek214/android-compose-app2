@@ -1,4 +1,4 @@
-package com.example.jetpackegitim2.ui.notes
+package com.example.jetpackegitim2.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
 data class NoteModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int=0,
-    val note:String
+    val noteTitle:String,
+    val noteDetail:String
 )
 
 

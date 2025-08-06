@@ -1,17 +1,13 @@
 package com.example.jetpackegitim2.navigation
 
 enum class Screen {
-    LOGIN,
-    REGISTER,
-    USERS,
-    SHAREDPREFERENCES,
-    NOTE
+    NOTE,
+    NOTE_DETAIL,
+    NOTE_ADD
 }
 
 sealed class NavigatioItem(val route: String) {
-    object Login: NavigatioItem(Screen.LOGIN.name)
-    object Register: NavigatioItem(Screen.REGISTER.name)
-    object Users: NavigatioItem(Screen.USERS.name)
-    object SharedPrefences: NavigatioItem(Screen.SHAREDPREFERENCES.name)
     object Note: NavigatioItem(Screen.NOTE.name)
+    object NoteDetail: NavigatioItem(Screen.NOTE_DETAIL.name)
+    object NoteAdd: NavigatioItem(Screen.NOTE_ADD.name)
 }

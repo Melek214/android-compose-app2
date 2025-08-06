@@ -2,10 +2,8 @@ package com.example.jetpackegitim2
 
 import android.content.Context
 import androidx.room.Room
-import com.example.jetpackegitim2.ui.notes.NotesDao
-import com.example.jetpackegitim2.ui.notes.NotesDatabase
-import com.example.jetpackegitim2.ui.notes.NotesScreen
-import com.example.jetpackegitim2.ui.users.UserRepository
+import com.example.jetpackegitim2.di.NotesDao
+import com.example.jetpackegitim2.di.NotesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,25 +18,17 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesNotesDatabase(@ApplicationContext context: Context):NotesDatabase{
+    fun provideANoteDatabase(@ApplicationContext context: Context) : NotesDatabase {
         return Room.databaseBuilder(
-                context,
-                NotesDatabase::class.java,
-                "notes_database"
-            ).fallbackToDestructiveMigration(false).build()
+            context,
+            NotesDatabase::class.java,
+            "notes_database"
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
     @Singleton
-    fun providesNotesDao(database: NotesDatabase):NotesDao{
+    fun provideNotesDao(database: NotesDatabase): NotesDao {
         return database.notesDao()
     }
-
-
-
-    @Provides
-    fun provideUserRepository(): UserRepository{
-        return UserRepository()
-    }
-
 }
